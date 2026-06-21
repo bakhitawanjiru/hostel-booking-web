@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Nairobi Urban Stay</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="Images/R.png" alt="logo" width="100" height="100">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#rooms">Rooms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#bookings">Bookings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#facilities">Facilities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#faq">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <p class="hero-tag">Reach out to us</p>
+                <h1 class="hero-title">Contact Nairobi Urban Stay</h1>
+                <p class="hero-text">Whether you are booking a room, asking about services, or planning a special stay, our team is ready to help. Send a message below, and we’ll respond quickly with the details you need.</p>
+                <div class="hero-actions">
+                    <a class="hero-btn primary" href="index.html">Home</a>
+                    <a class="hero-btn secondary" href="about.html">About us</a>
+                </div>
+            </div>
+            <div class="hero-carousel" aria-label="Contact Nairobi Urban Stay">
+                <div class="carousel-slides">
+                    <div class="carousel-slide active slide-2">
+                        <img class="carousel-image" src="Images/istockphoto-1770596613-612x612.jpg" alt="Reception desk and city view">
+                        <div class="slide-copy">
+                            <span>Get in touch</span>
+                            <h2>We’re here to make your stay effortless</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h2>Contact form</h2>
+                <p class="contact-intro">Use the form below for reservations, group stays, or any service request. We respond within one business day.</p>
+                <form class="contact-form" action="#" method="post">
+                    <div class="form-row">
+                        <label>
+                            Full name
+                            <input type="text" name="name" placeholder="Your full name" required>
+                        </label>
+                        <label>
+                            Email address
+                            <input type="email" name="email" placeholder="you@example.com" required>
+                        </label>
+                    </div>
+                    <div class="form-row">
+                        <label>
+                            Phone number
+                            <input type="tel" name="phone" placeholder="+254 700 000 000">
+                        </label>
+                        <label>
+                            Subject
+                            <select name="subject" required>
+                                <option value="">Choose a topic</option>
+                                <option value="booking">Booking request</option>
+                                <option value="facilities">Facilities inquiry</option>
+                                <option value="group">Group or event stay</option>
+                                <option value="other">Other question</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label>
+                        Message
+                        <textarea name="message" placeholder="Tell us what you need" required></textarea>
+                    </label>
+                    <div class="contact-checklist">
+                        <label><input type="checkbox" name="newsletter"> Send me offers and updates</label>
+                        <label><input type="checkbox" name="callback"> Request a callback</label>
+                    </div>
+                    <button class="hero-btn primary" type="submit">Send message</button>
+                </form>
+            </div>
+
+            <div class="contact-info-panel">
+                <div class="info-card">
+                    <h3>Visit us</h3>
+                    <p>24 Riverside Lane, Nairobi<br>Central Business District</p>
+                </div>
+                <div class="info-card">
+                    <h3>Call us</h3>
+                    <p>+254 712 345 678<br>Mon–Fri 08:00–20:00</p>
+                </div>
+                <div class="info-card">
+                    <h3>Email</h3>
+                    <p>hello@nairobiurbanstay.com<br>support@nairobiurbanstay.com</p>
+                </div>
+                <div class="contact-meta">
+                    <div>
+                        <strong>Fast reply</strong>
+                        <p>Most requests answered within 3 hours.</p>
+                    </div>
+                    <div>
+                        <strong>Trusted stay</strong>
+                        <p>Curated guest service for comfort and city convenience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

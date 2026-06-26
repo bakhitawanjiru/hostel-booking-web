@@ -86,7 +86,7 @@
 
             <small>per month</small>
 
-            <a class="hero-btn primary" href="contact.html">View Details</a>
+            <button class="view-details-btn" type="button" data-title="Studio Room" data-price="KSh 12,000 per month" data-description="A private study-friendly room with natural light, a quiet desk setup, and fast Wi-Fi for focus and comfort." data-payment="Reserve your room with a small deposit and complete the remaining balance on arrival or via bank transfer." data-paylink="contact.html">View Details</button>
 
         </div>
 
@@ -120,12 +120,74 @@
 
             <small>per month</small>
 
-            <a class="hero-btn primary" href="contact.html">View Details</a>
+            <button class="view-details-btn" type="button" data-title="Double Room" data-price="KSh 10,500 per month" data-description="A shared room with two beds, study space, secure storage, and a calm setup for students who want value and comfort." data-payment="Pay your deposit to secure the room, then settle the balance before move-in through bank transfer or cash." data-paylink="contact.html">View Details</button>
 
         </div>
 
     </div>
 
 </section>
+
+<div class="modal-overlay" id="roomModal" aria-hidden="true">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button class="modal-close" type="button" aria-label="Close popup">×</button>
+        <h3 id="modalTitle">Room details</h3>
+        <p class="modal-price" id="modalPrice"></p>
+        <p class="modal-description" id="modalDescription"></p>
+        <div class="modal-payment">
+            <strong>How to pay</strong>
+            <p id="modalPayment"></p>
+        </div>
+        <div class="modal-actions">
+            <button class="hero-btn secondary modal-cancel" type="button">Close</button>
+            <a class="hero-btn primary" id="modalPayButton" href="contact.html">Pay now</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById('roomModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalPayment = document.getElementById('modalPayment');
+    const modalPayButton = document.getElementById('modalPayButton');
+    const closeButtons = document.querySelectorAll('.modal-close, .modal-cancel');
+
+    function closeModal() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+    }
+
+    document.querySelectorAll('.view-details-btn').forEach((button) => {
+        button.addEventListener('click', () => {
+            modalTitle.textContent = button.dataset.title;
+            modalPrice.textContent = button.dataset.price;
+            modalDescription.textContent = button.dataset.description;
+            modalPayment.textContent = button.dataset.payment;
+            modalPayButton.href = button.dataset.paylink;
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+        });
+    });
+
+    closeButtons.forEach((button) => {
+        button.addEventListener('click', closeModal);
+    });
+
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeModal();
+        }
+    });
+</script>
 </body>
 </html>

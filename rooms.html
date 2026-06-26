@@ -174,7 +174,7 @@
         </div>
         <div class="modal-actions">
             <button class="hero-btn secondary modal-cancel" type="button">Close</button>
-            <a class="hero-btn primary" id="modalPayButton" href="contact.html">Pay now</a>
+            <a class="hero-btn primary" id="modalPayButton" href="contact.html" target="_self">Pay now</a>
         </div>
     </div>
 </div>
@@ -201,6 +201,7 @@
             modalDescription.textContent = button.dataset.description;
             modalPayment.textContent = button.dataset.payment;
             modalPayButton.href = button.dataset.paylink;
+            modalPayButton.setAttribute('href', 'contact.html');
             modal.classList.add('active');
             modal.setAttribute('aria-hidden', 'false');
             document.body.classList.add('modal-open');

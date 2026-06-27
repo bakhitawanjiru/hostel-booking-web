@@ -180,7 +180,7 @@
         </div>
         <div class="modal-actions">
             <button class="hero-btn secondary modal-cancel" type="button">Close</button>
-            <a class="hero-btn primary" id="modalPayButton" href="contact.html" target="_self">Pay now</a>
+            <button class="hero-btn primary" id="modalBookButton" type="button">Book Now</button>
         </div>
     </div>
 </div>
@@ -191,8 +191,9 @@
     const modalPrice = document.getElementById('modalPrice');
     const modalDescription = document.getElementById('modalDescription');
     const modalPayment = document.getElementById('modalPayment');
-    const modalPayButton = document.getElementById('modalPayButton');
+    const modalBookButton = document.getElementById('modalBookButton');
     const closeButtons = document.querySelectorAll('.modal-close, .modal-cancel');
+    let currentBookingButton = null;
 
     function closeModal() {
         modal.classList.remove('active');
@@ -200,19 +201,52 @@
         document.body.classList.remove('modal-open');
     }
 
+    function bookRoom() {
+        if (currentBookingButton) {
+            const roomCard = currentBookingButton.closest('.room-card');
+            const badge = roomCard.querySelector('.availability-badge');
+            
+            if (badge) {
+                // Update badge to unavailable
+                badge.classList.remove('available', 'limited');
+                badge.classList.add('unavailable');
+                badge.textContent = '✗ Booked';
+            }
+
+            // Disable the View Details button
+            currentBookingButton.disabled = true;
+            currentBookingButton.style.opacity = '0.5';
+            currentBookingButton.style.cursor = 'not-allowed';
+
+            // Show confirmation
+            alert('Room booked successfully! A confirmation email will be sent to you shortly.');
+            closeModal();
+        }
+    }
+
     document.querySelectorAll('.view-details-btn').forEach((button) => {
         button.addEventListener('click', () => {
+            // Check if already booked
+            const roomCard = button.closest('.room-card');
+            const badge = roomCard.querySelector('.availability-badge');
+            
+            if (badge && badge.classList.contains('unavailable')) {
+                alert('This room is no longer available.');
+                return;
+            }
+
+            currentBookingButton = button;
             modalTitle.textContent = button.dataset.title;
             modalPrice.textContent = button.dataset.price;
             modalDescription.textContent = button.dataset.description;
             modalPayment.textContent = button.dataset.payment;
-            modalPayButton.href = button.dataset.paylink;
-            modalPayButton.setAttribute('href', 'contact.html');
             modal.classList.add('active');
             modal.setAttribute('aria-hidden', 'false');
             document.body.classList.add('modal-open');
         });
     });
+
+    modalBookButton.addEventListener('click', bookRoom);
 
     closeButtons.forEach((button) => {
         button.addEventListener('click', closeModal);

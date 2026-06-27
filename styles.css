@@ -872,6 +872,11 @@
     background: #21867a;
 }
 
+.view-details-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
 .modal-overlay {
     position: fixed;
     inset: 0;

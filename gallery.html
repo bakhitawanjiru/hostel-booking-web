@@ -48,21 +48,117 @@
 
     <section class="gallery-page">
         <div class="gallery-grid">
-            <div class="gallery-card">
+            <button class="gallery-card" type="button" data-image="Images/studio room.jpg" data-title="Studio Room" data-caption="Quiet, bright, and perfect for focused study.">
                 <img src="Images/studio room.jpg" alt="Studio room">
                 <div class="gallery-caption">
                     <h3>Studio Room</h3>
                     <p>Quiet, bright, and perfect for focused study.</p>
                 </div>
-            </div>
-            <div class="gallery-card">
+            </button>
+            <button class="gallery-card" type="button" data-image="Images/premium room.jpg" data-title="Premium Room" data-caption="A more spacious feel with extra comfort and privacy.">
+                <img src="Images/premium room.jpg" alt="Premium room">
+                <div class="gallery-caption">
+                    <h3>Premium Room</h3>
+                    <p>A more spacious feel with extra comfort and privacy.</p>
+                </div>
+            </button>
+            <button class="gallery-card" type="button" data-image="Images/room with big mirror.jpg" data-title="Double Room" data-caption="A cozy shared space with soft lighting and a polished finish.">
                 <img src="Images/room with big mirror.jpg" alt="Double room">
                 <div class="gallery-caption">
                     <h3>Double Room</h3>
-                    <p>Comfortable shared space with plenty of charm.</p>
+                    <p>A cozy shared space with soft lighting and a polished finish.</p>
                 </div>
-            </div>
+            </button>
+            <button class="gallery-card" type="button" data-image="Images/double decker.jpg" data-title="4-Person Room" data-caption="A practical and social setup for student roommates.">
+                <img src="Images/double decker.jpg" alt="4-person room">
+                <div class="gallery-caption">
+                    <h3>4-Person Room</h3>
+                    <p>A practical and social setup for student roommates.</p>
+                </div>
+            </button>
+            <button class="gallery-card" type="button" data-image="Images/shared kitchen.jpg" data-title="Shared Kitchen" data-caption="A clean, functional space for easy meal prep and hangouts.">
+                <img src="Images/shared kitchen.jpg" alt="Shared kitchen">
+                <div class="gallery-caption">
+                    <h3>Shared Kitchen</h3>
+                    <p>A clean, functional space for easy meal prep and hangouts.</p>
+                </div>
+            </button>
+            <button class="gallery-card" type="button" data-image="Images/lounge area.jpg" data-title="Lounge Area" data-caption="A relaxed spot for reading, chatting, and winding down.">
+                <img src="Images/lounge area.jpg" alt="Lounge area">
+                <div class="gallery-caption">
+                    <h3>Lounge Area</h3>
+                    <p>A relaxed spot for reading, chatting, and winding down.</p>
+                </div>
+            </button>
+            <button class="gallery-card" type="button" data-image="Images/gym.jpg" data-title="Fitness Room" data-caption="A bright gym space for keeping up with your routine.">
+                <img src="Images/gym.jpg" alt="Gym">
+                <div class="gallery-caption">
+                    <h3>Fitness Room</h3>
+                    <p>A bright gym space for keeping up with your routine.</p>
+                </div>
+            </button>
+            <button class="gallery-card" type="button" data-image="Images/bathrooms.jpg" data-title="Clean Bathrooms" data-caption="Fresh and tidy shared bathrooms for everyday comfort.">
+                <img src="Images/bathrooms.jpg" alt="Bathrooms">
+                <div class="gallery-caption">
+                    <h3>Clean Bathrooms</h3>
+                    <p>Fresh and tidy shared bathrooms for everyday comfort.</p>
+                </div>
+            </button>
         </div>
     </section>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Image preview">
+            <button class="lightbox-close" type="button" aria-label="Close preview">×</button>
+            <img class="lightbox-image" id="lightbox-image" src="" alt="">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const cards = document.querySelectorAll('.gallery-card');
+
+        function openLightbox(card) {
+            lightboxImage.src = card.dataset.image;
+            lightboxImage.alt = card.dataset.title;
+            lightboxCaption.innerHTML = `<strong>${card.dataset.title}</strong><br>${card.dataset.caption}`;
+            lightbox.classList.add('active');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
+
+        cards.forEach((card) => {
+            card.addEventListener('click', () => openLightbox(card));
+            card.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openLightbox(card);
+                }
+            });
+        });
+
+        document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+
+        lightbox.addEventListener('click', (event) => {
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 </html>

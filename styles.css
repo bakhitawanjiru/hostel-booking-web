@@ -1198,6 +1198,105 @@ body.modal-open {
     position: relative;
 }
 
+/* FAQ Page Styles (accordion dropdowns) */
+.faq-page {
+  max-width: 920px;
+  margin: 2.5rem auto;
+  padding: 2rem 1rem;
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.faq-header .header-text span {
+  display: block;
+  color: #2A9D8F;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.5rem;
+}
+
+.faq-header h1 {
+  color: #264653;
+  font-size: 2rem;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.faq-container {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.faq-item {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(38,70,83,0.06);
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.2rem;
+  background: linear-gradient(180deg, rgba(42,157,143,0.04), transparent 60%);
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  color: #214051;
+}
+
+.faq-question .faq-title {
+  text-align: left;
+}
+
+.faq-question .faq-icon {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(38,70,83,0.06);
+  color: #264653;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  transition: transform 0.22s ease, background 0.22s ease;
+}
+
+.faq-question[aria-expanded="true"] .faq-icon {
+  transform: rotate(45deg);
+  background: rgba(42,157,143,0.12);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.32s ease, padding 0.28s ease;
+  padding: 0 1.2rem;
+  background: #fff;
+}
+
+.faq-answer p {
+  margin: 0.85rem 0 1.3rem;
+  color: #405a5f;
+  line-height: 1.7;
+}
+
+.faq-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+@media (max-width: 680px) {
+  .faq-page { padding: 1rem; }
+  .faq-header h1 { font-size: 1.5rem; }
+  .faq-question { padding: 0.8rem; }
+  .faq-answer { padding: 0 0.9rem; }
+}
+
 .booking-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 30px rgba(38, 70, 83, 0.18);
@@ -1356,3 +1455,6 @@ body.modal-open {
         width: 100%;
     }
 }
+
+
+

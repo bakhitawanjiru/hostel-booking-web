@@ -754,6 +754,85 @@
     font-size: 0.95rem;
 }
 
+.premium-section {
+    margin-bottom: 4rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(42, 157, 143, 0.08) 0%, rgba(244, 162, 97, 0.08) 100%);
+    border-radius: 1.5rem;
+    position: relative;
+}
+
+.premium-label {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #F4A261;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.premium-room-card {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #ffffff 0%, #FFF8F0 100%);
+    border-radius: 1.2rem;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(42, 157, 143, 0.15), 0 0 0 2px rgba(244, 162, 97, 0.3);
+    margin-bottom: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.premium-room-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 50px rgba(42, 157, 143, 0.2), 0 0 0 2px rgba(244, 162, 97, 0.5);
+}
+
+.premium-room-card img {
+    width: 380px;
+    height: 280px;
+    object-fit: cover;
+}
+
+.premium-room-card .features span {
+    background: rgba(244, 162, 97, 0.15);
+    color: #F4A261;
+}
+
+.price {
+    text-align: center;
+}
+
+.price h2 {
+    color: #264653;
+    font-size: 1.8rem;
+    margin: 0 0 0.3rem 0;
+}
+
+.price small {
+    color: #2A9D8F;
+    font-weight: 600;
+}
+
+.price .view-details-btn {
+    margin-top: 1rem;
+    display: inline-block;
+}
+
+.standard-rooms-section {
+    margin-top: 3rem;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: #264653;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e0e0e0;
+}
+
 @media (max-width: 980px) {
   .rooms-page {
     width: 100%;
@@ -781,6 +860,19 @@
   .room-card img {
     width: 100%;
     height: 260px;
+  }
+
+  .premium-room-card {
+    flex-direction: column;
+  }
+
+  .premium-room-card img {
+    width: 100%;
+    height: 260px;
+  }
+
+  .premium-section {
+    padding: 1.5rem;
   }
 }
 

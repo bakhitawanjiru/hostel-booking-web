@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings | Royal Crest Hostel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="Images/logo.png" alt="logo" width="100" height="100">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="rooms.html">Rooms</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="bookings.html">Bookings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="facilities.html">Facilities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#faq">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="bookings-page">
+        <div class="bookings-header">
+            <div class="header-text">
+                <span>YOUR BOOKINGS</span>
+                <h1>Your reserved rooms at Royal Crest</h1>
+                <p>Track all your room bookings and reservation details here.</p>
+            </div>
+        </div>
+
+        <div class="bookings-container">
+            <div id="bookingsList" class="bookings-list">
+                <!-- Bookings will be loaded here by JavaScript -->
+            </div>
+            <div id="emptyState" class="empty-state">
+                <p>📭 No bookings yet. <a href="rooms.html">Browse our rooms and make your first booking!</a></p>
+            </div>
+        </div>
+
+        <div class="bookings-actions">
+            <button class="hero-btn secondary" type="button" onclick="window.location.href='rooms.html'">Browse Rooms</button>
+            <button class="hero-btn primary" type="button" onclick="clearAllBookings()">Clear All Bookings</button>
+        </div>
+    </section>
+
+    <script>
+        function displayBookings() {
+            const bookingsList = document.getElementById('bookingsList');
+            const emptyState = document.getElementById('emptyState');
+            const bookings = JSON.parse(localStorage.getItem('roomBookings')) || [];
+
+            if (bookings.length === 0) {
+                bookingsList.innerHTML = '';
+                emptyState.style.display = 'block';
+            } else {
+                emptyState.style.display = 'none';
+                bookingsList.innerHTML = bookings.map((booking, index) => `
+                    <div class="booking-card">
+                        <button class="remove-booking" onclick="removeBooking(${index})" title="Remove booking">×</button>
+                        <div class="booking-image">
+                            <img src="${booking.image}" alt="${booking.roomTitle}">
+                        </div>
+                        <div class="booking-details">
+                            <h3>${booking.roomTitle}</h3>
+                            <p class="booking-price">${booking.price}</p>
+                            <div class="booking-meta">
+                                <span>📅 Booked on: ${booking.bookedDate}</span>
+                                <span>⏰ Time: ${booking.bookedTime}</span>
+                            </div>
+                            <p class="booking-description">${booking.description}</p>
+                            <p class="booking-payment"><strong>Payment Info:</strong> ${booking.payment}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function removeBooking(index) {
+            const bookings = JSON.parse(localStorage.getItem('roomBookings')) || [];
+            bookings.splice(index, 1);
+            localStorage.setItem('roomBookings', JSON.stringify(bookings));
+            displayBookings();
+        }
+
+        function clearAllBookings() {
+            if (confirm('Are you sure you want to clear all bookings?')) {
+                localStorage.removeItem('roomBookings');
+                displayBookings();
+            }
+        }
+
+        // Load bookings on page load
+        document.addEventListener('DOMContentLoaded', displayBookings);
+    </script>
+</body>
+</html>

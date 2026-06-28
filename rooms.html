@@ -27,7 +27,7 @@
                         <a class="nav-link active" href="rooms.html">Rooms</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html#bookings">Bookings</a>
+                        <a class="nav-link" href="bookings.html">Bookings</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.html#gallery">Gallery</a>
@@ -205,6 +205,28 @@
         if (currentBookingButton) {
             const roomCard = currentBookingButton.closest('.room-card');
             const badge = roomCard.querySelector('.availability-badge');
+            const roomImage = roomCard.querySelector('img').src;
+            
+            // Get current date and time
+            const now = new Date();
+            const bookedDate = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            const bookedTime = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+            
+            // Create booking object
+            const booking = {
+                roomTitle: currentBookingButton.dataset.title,
+                price: currentBookingButton.dataset.price,
+                description: currentBookingButton.dataset.description,
+                payment: currentBookingButton.dataset.payment,
+                image: roomImage,
+                bookedDate: bookedDate,
+                bookedTime: bookedTime
+            };
+            
+            // Save to localStorage
+            const bookings = JSON.parse(localStorage.getItem('roomBookings')) || [];
+            bookings.push(booking);
+            localStorage.setItem('roomBookings', JSON.stringify(bookings));
             
             if (badge) {
                 // Update badge to unavailable
@@ -219,7 +241,7 @@
             currentBookingButton.style.cursor = 'not-allowed';
 
             // Show confirmation
-            alert('Room booked successfully! A confirmation email will be sent to you shortly.');
+            alert('Room booked successfully! Check your bookings page to view all your reservations.');
             closeModal();
         }
     }

@@ -76,25 +76,29 @@
             <div class="contact-card">
                 <h2>Contact form</h2>
                 <p class="contact-intro">Use the form below for reservations, group stays, or any service request. We respond within one business day.</p>
-                <form class="contact-form" action="#" method="post">
+                <form class="contact-form" id="contactForm" action="#" method="post" novalidate>
                     <div class="form-row">
-                        <label>
+                        <label for="name">
                             Full name
-                            <input type="text" name="name" placeholder="Your full name" required>
+                            <input id="name" type="text" name="name" placeholder="e.g. Amina Otieno" required>
+                            <small class="field-note">Enter first and last name</small>
                         </label>
-                        <label>
+                        <label for="email">
                             Email address
-                            <input type="email" name="email" placeholder="you@example.com" required>
+                            <input id="email" type="email" name="email" placeholder="you@example.com" required>
+                            <small class="field-note">We use this to reply to you</small>
                         </label>
                     </div>
+
                     <div class="form-row">
-                        <label>
+                        <label for="phone">
                             Phone number
-                            <input type="tel" name="phone" placeholder="+254 700 000 000">
+                            <input id="phone" type="tel" name="phone" placeholder="+254 700 000 000">
+                            <small class="field-note">Optional — include country code</small>
                         </label>
-                        <label>
+                        <label for="subject">
                             Subject
-                            <select name="subject" required>
+                            <select id="subject" name="subject" required>
                                 <option value="">Choose a topic</option>
                                 <option value="booking">Booking request</option>
                                 <option value="facilities">Facilities inquiry</option>
@@ -103,15 +107,24 @@
                             </select>
                         </label>
                     </div>
-                    <label>
+
+                    <label class="full" for="message">
                         Message
-                        <textarea name="message" placeholder="Tell us what you need" required></textarea>
+                        <textarea id="message" name="message" placeholder="Give a short description so we can help faster" required></textarea>
+                        <small class="field-note">Give brief details so we can help faster</small>
                     </label>
+
                     <div class="contact-checklist">
                         <label><input type="checkbox" name="newsletter"> Send me offers and updates</label>
                         <label><input type="checkbox" name="callback"> Request a callback</label>
                     </div>
-                    <button class="hero-btn primary" type="submit">Send message</button>
+
+                    <div class="form-actions">
+                        <button class="hero-btn primary" type="submit">Send message</button>
+                        <button class="hero-btn secondary" type="reset">Reset</button>
+                    </div>
+
+                    <p id="formSuccess" class="field-note" style="display:none;color:#2A9D8F;margin-top:12px;">Thanks — your message was sent. We'll reply within 24 hours.</p>
                 </form>
             </div>
 

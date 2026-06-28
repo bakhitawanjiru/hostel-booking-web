@@ -455,6 +455,14 @@
   box-shadow: 0 28px 60px rgba(38, 70, 83, 0.12);
 }
 
+/* Improved contact form visuals */
+.contact-card {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2.25rem;
+  border: 1px solid rgba(38,70,83,0.05);
+}
+
 .contact-card h2,
 .contact-info-panel h3 {
   margin-top: 0;
@@ -480,6 +488,12 @@
   font-size: 0.98rem;
 }
 
+.contact-form label .field-note {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: #6b7a7a;
+}
+
 .contact-form input,
 .contact-form textarea,
 .contact-form select {
@@ -501,6 +515,18 @@
   box-shadow: 0 0 0 4px rgba(42, 157, 143, 0.14);
 }
 
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.12s ease;
+}
+
+.contact-form input:hover,
+.contact-form textarea:hover,
+.contact-form select:hover {
+  transform: translateY(-2px);
+}
+
 .contact-form textarea {
   min-height: 190px;
   resize: vertical;
@@ -510,6 +536,10 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+}
+
+.form-row .full {
+  grid-column: 1 / -1;
 }
 
 .contact-checklist {
@@ -525,6 +555,17 @@
   display: inline-flex;
   gap: 0.75rem;
   font-weight: 500;
+}
+
+.contact-card .hero-btn.primary {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.9rem;
+}
+
+.contact-card .hero-btn.secondary {
+  width: 100%;
 }
 
 .contact-checklist input {

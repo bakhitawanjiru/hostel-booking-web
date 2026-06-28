@@ -1321,6 +1321,87 @@ body.modal-open {
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
+/* Site footer styles */
+.site-footer {
+  background: linear-gradient(135deg, #264653 0%, #2A9D8F 100%);
+  color: #FFF8F0;
+  padding: 2rem 1rem 1.25rem;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.footer-brand img {
+  height: 56px;
+  width: auto;
+  border-radius: 8px;
+}
+
+.footer-brand .brand-text strong {
+  display: block;
+  color: #FFF8F0;
+  font-size: 1.05rem;
+}
+
+.footer-brand .brand-text small {
+  display: block;
+  color: rgba(255,248,240,0.9);
+  font-size: 0.85rem;
+  opacity: 0.95;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.footer-nav a {
+  color: rgba(255,248,240,0.95);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+}
+
+.footer-nav a:hover {
+  background: rgba(255,248,240,0.06);
+}
+
+.footer-contact {
+  text-align: right;
+  font-size: 0.95rem;
+  color: rgba(255,248,240,0.95);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,248,240,0.06);
+  color: rgba(255,248,240,0.9);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 680px) {
+  .footer-inner { flex-direction: column; text-align: center; gap: 0.6rem; }
+  .footer-contact { text-align: center; }
+  .footer-nav { justify-content: center; flex-wrap: wrap; }
+}
+
 .remove-booking:hover {
     background: #d32f2f;
     transform: scale(1.1);

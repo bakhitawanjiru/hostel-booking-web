@@ -175,6 +175,7 @@
   }
 
   const container = document.querySelector('.container-fluid');
+  const navbarCollapse = document.querySelector('.navbar-collapse');
   if (container && !document.querySelector('.theme-toggle')) {
     const button = document.createElement('button');
     button.type = 'button';
@@ -182,7 +183,11 @@
     button.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark';
     button.setAttribute('aria-label', 'Toggle color theme');
     button.addEventListener('click', toggleTheme);
-    container.insertBefore(button, container.firstChild);
+    if (navbarCollapse) {
+      container.insertBefore(button, navbarCollapse);
+    } else {
+      container.appendChild(button);
+    }
   }
 </script>
 </body>
